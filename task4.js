@@ -21,5 +21,5 @@ const urls = [
 ];
 
 loadSelectedData(urls)
-    .then(data => console.log("Успешные данные:", data))
+    .then(successfulData => console.log("Нормално загрузилось:", successfulData))
     .catch(error => console.error("Ошибка:", error.message));
