@@ -1,18 +1,18 @@
-import axios from "axios";
+import axios from "axios"
 
 async function* fetchPagesWithStopCondition(urls, maxPages) {
-    let counter = 0;
+    let counter = 0
 
     for (const url of urls) {
-        if (counter >= maxPages) break;
+        if (counter >= maxPages) break
 
         try {
-            const response = await axios.get(url);
-            yield response.data;
-            counter++;
+            const response = await axios.get(url)
+            yield response.data
+            counter++
         } catch (error) {
-            console.log(`Ошибка в ${url}: ${error.message}`);
-            break; 
+            console.log(`Ошибка в ${url}: ${error.message}`)
+            break
         }
     }
 }
@@ -24,9 +24,9 @@ async function* fetchPagesWithStopCondition(urls, maxPages) {
         "https://kakapopa.com/",
         "https://jsonplaceholder.typicode.com/posts/3"
     ];
-    const maxPages = 3;
+    const maxPages = 3
 
     for await (const data of fetchPagesWithStopCondition(urls, maxPages)) {
-        console.log("Успешные данные:", data);
+        console.log("Успешные данные:", data)
     }
 })();
